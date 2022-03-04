@@ -1,4 +1,4 @@
-package com.example.algorithm.base;
+package com.example.algorithm.base.binarysearch;
 
 /**
  * @description: 二分查找
