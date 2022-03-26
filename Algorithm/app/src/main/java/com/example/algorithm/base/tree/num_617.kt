@@ -1,7 +1,5 @@
 package com.example.algorithm.base.tree
 
-import com.example.algorithm.base.slidewindow.num_567
-
 /**
  * @description:
  * @author: tingyuan
