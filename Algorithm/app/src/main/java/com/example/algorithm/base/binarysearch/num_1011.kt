@@ -17,6 +17,40 @@ object num_1011 {
         System.out.println(shipWithinDays(testArray,days))
     }
     fun shipWithinDays(weights: IntArray, days: Int): Int {
-        return 0
+        //每趟装载能力最小值
+        var left = 0
+        //每趟装载能力最大值
+        var right = 1
+        for (i in weights) {
+            left = Math.max(left,i)
+            right += i
+        }
+        //二分查找，再进行枚举
+        while (left < right) {
+            val mid = left + (right - left) / 2
+            if (f(weights,mid) <= days) {
+                right = mid
+            } else {
+                left = mid + 1
+            }
+        }
+        return left
+    }
+
+    // 定义：当运载能力为 x 时，需要 f(x) 天运完所有货物
+    // f(x) 随着 x 的增加单调递减
+    fun f(weights: IntArray, x: Int): Int {
+        var days = 0
+        var i = 0
+        while (i < weights.size) {
+            // 尽可能多装货物
+            var cap = x
+            while (i < weights.size) {
+                cap -= if (cap < weights[i]) break else weights[i]
+                i++
+            }
+            days++
+        }
+        return days
     }
 }
