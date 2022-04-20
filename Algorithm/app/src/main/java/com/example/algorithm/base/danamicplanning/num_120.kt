@@ -14,33 +14,7 @@ import java.util.*
  * @date: 2022/4/14
  */
 class num_120 {
-    fun minimumTotal(triangle: List<List<Int>>): Int {
-        val n = triangle.size
-        // 定义：走到第 i 行第 j 个元素的最小路径和是 dp[i][j]
-        val dp = Array(n) { IntArray(n) }
-        for (i in dp.indices) {
-            // 因为求最小值，所以全都初始化为极大值
-            Arrays.fill(dp[i], Int.MAX_VALUE)
-        }
-        // base case
-        dp[0][0] = triangle[0][0]
-        // 进行状态转移
-        for (i in 1 until dp.size) {
-            val row = triangle[i]
-            for (j in row.indices) {
-                // 状态转移方程
-                if (j - 1 >= 0) {
-                    dp[i][j] = Math.min(dp[i - 1][j], dp[i - 1][j - 1]) + row[j]
-                } else {
-                    dp[i][j] = dp[i - 1][j] + row[j]
-                }
-            }
-        }
-        // 找出落到最后一层的最小路径和
-        var res = Int.MAX_VALUE
-        for (j in 0 until dp[n - 1].size) {
-            res = Math.min(res, dp[n - 1][j])
-        }
-        return res
-    }
+
+
+
 }
